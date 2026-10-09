@@ -43,7 +43,8 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 
 ## B5c. Domain heuristics (the methodology gap)
 - What craft rules does this domain have that a generic workflow can't know? (例: 选角度要反直觉优先, 短段落是因为手机阅读, 收口要做选择题.) If the domain heuristics aren't in this interview, the artifact lands at 60 分 even when the workflow is perfect.
-- **Decides**: a "Craft notes" block in the generated SKILL.md; each heuristic = one line of what + one line of why (the official skill-creator's "explain why, not MUSTs" rule).
+- **Decides**: a "Craft notes" block in the generated SKILL.md; each heuristic = one line of what + one line of why (the official skill-creator's "explain why, not MUSTs" rule) **+ a degradation path**: what to do when the heuristic can't apply (e.g. topic has no counterintuitive room → fall back to one sharp, checkable fact, never padded with clichés).
+  A craft note without a degradation path *guarantees* a violation at the topic boundary where it stops fitting — the test that exposed this: a "counterintuitive angle" note broke on a client-facing performance-report topic that has no counterintuitive room.
 - *Explore first*: existing house style docs, previous artifacts, the user's own phrasings in B2.
 
 ## B6. Environment & credentials

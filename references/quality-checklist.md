@@ -27,7 +27,7 @@ Simulate routing with 3 tasks and present the reasoning to the user:
 - 5: Guardrails present where mutations/deletes/credentials/network are involved
 - 5: **secrets rule** — no credential value in any skill file; when an API is involved, SKILL.md names the env var/keychain source and Guardrails forbids writing/logging secrets
 - 5: **claim traceability** (B5b) — no unlabeled invented specifics in the trial artifact; a 示例/假设-or-source rule exists in the skill
-- 5: **craft notes** (B5c) — domain heuristics captured with what+why, not just process steps; 0 if the artifact's quality ceiling depends on unrecorded domain knowledge
+- 5: **craft notes** (B5c) — domain heuristics captured with what+why, not just process steps; 0 if the artifact's quality ceiling depends on unrecorded domain knowledge; **a craft note without a degradation path (what to do when the heuristic can't apply) also scores 0** — it will be violated at the topic boundary where it stops fitting
 - 5: success criteria (B9) verifiable — the user can check a run worked
 - 5: trial output matched the success criteria
 

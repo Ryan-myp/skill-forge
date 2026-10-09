@@ -51,7 +51,7 @@ cd <skill-dir> && <init command>
 
 ## Craft notes (when B5c resolved anything)
 
-- <what>: <one line of why>   # e.g. "angles: pick the counterintuitive one — 套路化三件套读者刷到第二个就猜到"
+- <what>: <one line of why> · **if it can't apply: <degradation path>**   # e.g. "角度要反直觉优先 — 套路三件套读者刷到第二就猜到；题材没反直觉空间时降级为一个尖锐具体的可检查事实"
 
 ## Rules when filling
 

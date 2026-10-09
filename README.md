@@ -28,7 +28,7 @@ Natural language — "make a skill for X", "turn my qguard workflow into a skill
 ## Structure
 
 - `SKILL.md` — 6-phase workflow: restate → grill → spec approval → scaffold → quality gate → handoff
-- `references/interview.md` — 10-branch question bank
+- `references/interview.md` — 10-branch question bank (incl. B5a audience, B5b claim traceability, B5c craft notes with degradation paths)
 - `references/anatomy.md` — Agent Skills standard + description formula
 - `references/template.md` — scaffold templates
 - `references/quality-checklist.md` — 0–100 scoring rubric
