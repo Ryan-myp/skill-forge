@@ -17,6 +17,12 @@ Restate the goal in one sentence. Confirm two things:
 
 **Spec source check**: is this a fresh request (user's words) or a **port of an existing skill** (its SKILL.md + scripts are the source of truth)? If a port: skip the grill in step 2, go to **porting mode** instead — extract fidelity facts from the original (gotcha count, command surface, script inventory, license) and rebuild the instruction layer only. Description is **derived, not inherited**: keep the routing intent, rewrite the wording with concrete trigger phrases. Never wholesale-copy content you don't have the license to copy (check LICENSE first; proprietary → port the *methodology*, rewrite the code).
 
+**Third mode — wild audit** (existing skill, no rebuild): run the four deterministic checks, patch in place, no grill:
+1. **External-surface gate**: does the skill's capability depend on tools/CLIs registered elsewhere? If so, it must open with a check ("tools not registered → say so, don't improvise raw-HTTP stand-ins").
+2. **Path truthfulness**: every referenced file/script path must exist; a doc left pointing at a missing `scripts/` is a coverage bug.
+3. **Domain traps**: numeric units (micros vs millis vs seconds), API version strings, deprecated fields — flag the ones most likely to be wrong, each with its consequence (a 1000× timestamp bug is a domain trap worth a line).
+4. **Unbounded + destructive loops**: polling without a cap, batch ops without a single-item dry-run, destructive mutations without a confirm-scope gate → patch each with its bound or gate.
+
 ### 2. Grill (interview phase)
 
 Load [references/interview.md](references/interview.md).
