@@ -1,0 +1,16 @@
+{
+  "skill": "wxarticle",
+  "note": "路由判定由 agent 依据 ~/.agents/skills/wxarticle 的 SKILL.md description 独立做出（模拟无上下文路由场景）；候选集: wxarticle, docx-port, dv360-expert, NO_SKILL",
+  "results": [
+    {"id": 1, "choice": "wxarticle"},
+    {"id": 2, "choice": "wxarticle"},
+    {"id": 3, "choice": "wxarticle"},
+    {"id": 4, "choice": "wxarticle"},
+    {"id": 5, "choice": "wxarticle"},
+    {"id": 6, "choice": "NO_SKILL"},
+    {"id": 7, "choice": "docx-port"},
+    {"id": 8, "choice": "dv360-expert"},
+    {"id": 9, "choice": "NO_SKILL"},
+    {"id": 10, "choice": "NO_SKILL"}
+  ]
+}

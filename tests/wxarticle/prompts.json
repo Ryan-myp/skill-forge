@@ -1,0 +1,16 @@
+{
+  "skill": "wxarticle",
+  "cands": ["wxarticle", "docx-port", "dv360-expert", "NO_SKILL"],
+  "probes": [
+    {"id": 1, "expect": "wxarticle", "prompt": "帮我写篇公众号文章，主题是远程办公的坑，配张头图"},
+    {"id": 2, "expect": "wxarticle", "prompt": "做个微信图文：手冲咖啡入门，别太啰嗦，要能直接粘贴进编辑器"},
+    {"id": 3, "expect": "wxarticle", "prompt": "写个公众号推文，300 字左右，讲我上周踩的一个部署坑"},
+    {"id": 4, "expect": "wxarticle", "prompt": "公众号排版：把这份草稿做成图文，带 SVG 头图"},
+    {"id": 5, "expect": "wxarticle", "prompt": "帮我把这段口述整理成公众号文章：今天团队复盘会讲了三个问题……（后续是口述内容）"},
+    {"id": 6, "expect": "NO_SKILL", "prompt": "周末想写篇朋友圈文案，就三四句话"},
+    {"id": 7, "expect": "docx-port", "prompt": "把这份 docx 加个目录和页码"},
+    {"id": 8, "expect": "dv360-expert", "prompt": "帮我查下 DV360 里 Q3 的某个 line item 花多少钱"},
+    {"id": 9, "expect": "NO_SKILL", "prompt": "写个函数：解析 nginx 访问日志，按 IP 统计 PV"},
+    {"id": 10, "expect": "NO_SKILL", "prompt": "帮我写篇知乎回答：什么是幂等性"}
+  ]
+}

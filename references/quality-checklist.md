@@ -9,6 +9,11 @@ Run after scaffolding, **before** user acceptance. Agent scores A/C/D/E; **B cou
 3. directory under a valid skill location, name unique (no collision with `ls ~/.agents/skills/`); **dependency inventory with install commands** (grep the scripts for implicit imports — original docs lie); **license**: external content carries the original's `license:` field, proprietary code is rewritten not copied
 
 ## B. Trigger accuracy (25) — agent-proposed, **user-confirmed**
+
+- 5 × description contains the concrete trigger phrases a user would actually say (not synonyms of the noun)
+- 5 × the *skip* boundary is explicit (what must NOT trigger it)
+- 5 × **trigger regression run**: `tests/<skill>/prompts.json` (≥10 probes: ≥5 positive, ≥3 in-domain negatives, ≥2 out-of-domain routed to other candidates) executed by a fresh-session router, scored by `scripts/trigger_score.py` against `tests/<skill>/baseline.json`; F1 < baseline → description regressed, say so
+- 5 × user confirms (axis stays user-disposed: the number informs, the user disposes)
 Simulate routing with 3 tasks and present the reasoning to the user:
 1. Two tasks the skill SHOULD handle (paraphrased from the user's B2 phrases) — would the description plausibly cause loading?
 2. One similar-but-different task it should NOT handle — is the description specific enough to avoid the false positive?
