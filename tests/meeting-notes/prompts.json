@@ -1,0 +1,16 @@
+{
+  "skill": "meeting-notes",
+  "cands": ["meeting-notes", "wxarticle", "weread-skills", "docx-forge", "NO_SKILL"],
+  "probes": [
+    {"id": 1, "expect": "meeting-notes", "prompt": "把这段会议转写整理成纪要，行动项单独列出来"},
+    {"id": 2, "expect": "meeting-notes", "prompt": "这份会议记录拖太长了，帮我提炼成结构化纪要"},
+    {"id": 3, "expect": "meeting-notes", "prompt": "把录音转的文字整理成会议要点，标出谁负责什么"},
+    {"id": 4, "expect": "NO_SKILL", "prompt": "把这段音频转成文字"},
+    {"id": 5, "expect": "wxarticle", "prompt": "写篇公众号文章讲讲我们今天的会议成果"},
+    {"id": 6, "expect": "weread-skills", "prompt": "看看我微信读书的书架"},
+    {"id": 7, "expect": "docx-forge", "prompt": "把纪要转成正式 Word 文档交付"},
+    {"id": 8, "expect": "meeting-notes", "prompt": "帮我出个会议纪要，要有时间线"},
+    {"id": 9, "expect": "NO_SKILL", "prompt": "把这个 docx 里的表格数据导成 xlsx"},
+    {"id": 10, "expect": "meeting-notes", "prompt": "这段转写里有哪些行动项？列个表格"}
+  ]
+}

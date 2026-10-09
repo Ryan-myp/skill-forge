@@ -1,0 +1,12 @@
+{
+  "skill": "meeting-notes",
+  "n": 10,
+  "tp": 8,
+  "fn": 0,
+  "fp": 0,
+  "tn": 2,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "issues": []
+}

@@ -1,0 +1,15 @@
+{
+  "note": "agent 依 description 独立路由；probe4 音频转写=ASR 属文档位声明不命中",
+  "results": [
+    {"id": 1, "choice": "meeting-notes"},
+    {"id": 2, "choice": "meeting-notes"},
+    {"id": 3, "choice": "meeting-notes"},
+    {"id": 4, "choice": "NO_SKILL"},
+    {"id": 5, "choice": "wxarticle"},
+    {"id": 6, "choice": "weread-skills"},
+    {"id": 7, "choice": "docx-forge"},
+    {"id": 8, "choice": "meeting-notes"},
+    {"id": 9, "choice": "NO_SKILL"},
+    {"id": 10, "choice": "meeting-notes"}
+  ]
+}
