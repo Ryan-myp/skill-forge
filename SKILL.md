@@ -78,6 +78,7 @@ Tell the user:
 - Prefer executable commands over prose. "Run `./scripts/x.sh <input>`" beats "process the input appropriately".
 - Split by kind, not by count: workflow stays in SKILL.md; reference material to references/; code to scripts/. Readability test: a busy user skims the workflow in one sitting.
 - **Credentials are a first-class guardrail**: no secret ever enters a skill file. Scripts read tokens from environment variables or the user's keychain at runtime; SKILL.md names the variable, never its value; whenever an API is involved, Guardrails says so explicitly.
-- **Dependency inventory**: every runtime dep (npm/python/binary) gets a line with its install command; a trial that hits a missing dep reports it honestly, never silently skips the step it blocked.
+- **Dependency inventory**: every runtime dep (npm/python/binary) gets a line with its install command; a trial that hits a missing dep reports it honestly, never silently skips the step it blocked. (Example found in testing: `playwright` pip-installed but browsers not downloaded — the dep line must cover `playwright install chromium`, not just the package.)
+- **Context hygiene**: helper scripts > ~200 lines are documented by contract, not source — first step is `--help`, the doc says *when* to read the source (only after --help proves the contract insufficient). A skill that says "read the script" for a 500-line helper is leaking its own quality: the agent's context dies before the task does.
 - **Script documentation coverage**: every shipped script is documented somewhere (SKILL.md or references/); an undocumented script is a coverage bug, scored 0 on axis D.
 - The generated skill's description is its most important artifact — spend the most interview time on it.

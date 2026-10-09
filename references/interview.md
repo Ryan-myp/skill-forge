@@ -81,6 +81,11 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - **Decides**: explicit "Never" section in the generated SKILL.md.
 - Recommended default: inherit the host project's critical rules (secrets, injection, deletes) + B6's secrets rule.
 
+## B11. Interactive skills (multi-gate workflows)
+- Does the skill guide the user through stages (interview → draft → review)? Each gate needs: **one confirm per stage, an explicit exit condition** ("proceed when <observable signal>", not "when enough"), and a **decline path** (user says freeform → stop guiding, don't nag).
+- Also: a "fresh context" verification step (e.g. reader test in a new session) only counts if the new context is actually clean — same-session "roleplay as a stranger" is fake and scores 0.
+- *Skip if*: single-pass skill, no user gates.
+
 ## Termination & budget
 
 - **Hard cap: 10 questions total.** Branches answered by exploration don't count, but anything still open at question 10 is resolved with your recommended defaults, listed as explicit assumptions in the spec, and the user approves once.

@@ -17,6 +17,7 @@ Simulate routing with 3 tasks and present the reasoning to the user:
 
 ## C. Executability (20)
 - 10 pts: each workflow step is imperative with an exact command/decision rule. Any "as appropriate", "handle sensibly", "generally" → 0 for that step; 10 × (non-improvising steps ÷ total steps).
+- **Pure-craft skills (no scripts)**: executability is carried by *checkable anchors* instead — an anti-cliché checklist, a self-critique pass with an observable output (screenshot, diff, re-read). A craft skill whose steps end in "be original" has no anchor: 0 on this sub-axis.
 - 10 pts: **end-to-end trial performed** — the skill was invoked on the smallest plausible real task and completed (trial artifacts exist: output files, command logs). Trial not run = 0/10.
 
 ## D. Progressive disclosure & coverage (15)
@@ -25,7 +26,7 @@ Simulate routing with 3 tasks and present the reasoning to the user:
 - 5: **script documentation coverage** — `ls scripts/` matches the documented command surface 1:1; an undocumented script = 0/5
 
 ## E. Safety, content & closure (25)
-- 5: Guardrails present where mutations/deletes/credentials/network are involved
+- 5: Guardrails present where mutations/deletes/credentials/network are involved; **interactive skills: each user gate carries a checkable exit condition + a decline path (B11)**
 - 5: **secrets rule** — no credential value in any skill file; when an API is involved, SKILL.md names the env var/keychain source and Guardrails forbids writing/logging secrets
 - 5: **claim traceability** (B5b) — no unlabeled invented specifics in the trial artifact; a 示例/假设-or-source rule exists in the skill
 - 5: **craft notes** (B5c) — domain heuristics captured with what+why, not just process steps; 0 if the artifact's quality ceiling depends on unrecorded domain knowledge; **a craft note without a degradation path (what to do when the heuristic can't apply) also scores 0** — it will be violated at the topic boundary where it stops fitting
