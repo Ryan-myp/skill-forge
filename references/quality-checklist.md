@@ -34,7 +34,7 @@ Simulate routing with 3 tasks and present the reasoning to the user:
 - 5: Guardrails present where mutations/deletes/credentials/network are involved; **interactive skills: each user gate carries a checkable exit condition + a decline path (B11)**
 - 5: **secrets rule** — no credential value in any skill file; when an API is involved, SKILL.md names the env var/keychain source and Guardrails forbids writing/logging secrets
 - 5: **claim traceability** (B5b) — no unlabeled invented specifics in the trial artifact; a 示例/假设-or-source rule exists in the skill
-- 5: **craft notes** (B5c) — domain heuristics captured with what+why, not just process steps; 0 if the artifact's quality ceiling depends on unrecorded domain knowledge; **a craft note without a degradation path (what to do when the heuristic can't apply) also scores 0** — it will be violated at the topic boundary where it stops fitting
+- 5: **domain knowledge** (B5c) — craft notes with what+why **+ degradation path** (0 without); each tagged measured/upstream/user (untagged = rumor, -1 each, cap -3); **domain density floor**: when a benchmark skill exists in the domain, enumerate its gotcha categories and match-or-declare (“未实现·文档位 + 为什么” counts, silent omission doesn’t)
 - 5: success criteria (B9) verifiable **and** the trial output actually matched them
 
 ## Deliverable format
