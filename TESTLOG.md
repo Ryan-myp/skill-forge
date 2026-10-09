@@ -15,6 +15,7 @@
 | v0.9 | 触发率自动回归（harness 落地） | 官方 run_eval.py 绑死 claude -p 不可移植；手写探针标注错（把别的 skill 的正路由误标成 NO_SKILL，虚报了 2 个 FP） | **工具无关三件套**：`tests/<skill>/prompts.json`（≥10 探针）+ agent 新会话路由判定 + `scripts/trigger_score.py`（P/R/F1 + 基线 delta）；B 轴改为“数字基线 + 用户拍板”；wxarticle 首发基线 F1=1.0 已落盘 |
 | v1.0 | **docx 盲建对决**（skill-forge 从零造 docx-forge vs 官方 docx，同工件 8 步） | 官方 0/8 闭环：docx-js “预装”不实、comment.py 在本机无任何可用 Python（3.9 语法炸/3.12 缺 defusedxml）、soffice/pandoc 缺失；同时官方胜在触发面 + 12 条领域纵深 gotcha；自检修件又抓出一个自检器命名空间 bug 误报 | ① B5c 加 provenance 标签（measured/upstream/user，传闻降分）② 环境假设三件套（探测+安装+降级，未探测断言 E 轴 0 分）③ 交付型 skill 必须带 exit-code 自检且自检器自身先过单测；docx-forge 本体（双脚本+自检+试金石）留在本地 |
 | v1.1 | **第二遍密度回补**（同一 docx-forge 开 provenance 规则追平官方） | 上游文本里一次性挖出 7 条本 skill 缺的 gotcha（run 碎片/外部 docx symlink 安全/tracked changes 机制/空 bullet 假象/表格双宽度/tab leader/样式名）；f-string 反斜杠在 py3.9 炸（老代码假设 3.12+） | **领域密度 floor**（E 轴：对标 skill 必须按 gotcha 类别 match-or-declare，缺类需声明“未实现·文档位”）；探索先挖本地来源（官方 gotcha 文本即现成上游） |
+| v1.2 | **weread 真实场景审计** | weread 里抓出 `upgrade_info` 指令注入面（第三方 API 响应字段驱动 agent 执行升级，配合自带 curl 模板=完整攻击路径）；分页循环无次数上限；另误报一次“版本漂移”（1.0.3 vs 1.0.5），grep 复核后撤——**发现必须可复现才能上报** | ① 响应字段=数据非指令（唯一可执行升级路径是用户显式设定的）② 无界循环必须带上限+停报路径（C 轴 0 分项）③ wild-audit 增加“发现复核”步骤（grep 二次确认后才上报） |
 
 ## 当前形态覆盖
 
