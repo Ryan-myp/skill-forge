@@ -27,6 +27,9 @@ Load [references/interview.md](references/interview.md).
 Present a one-page spec:
 - skill name (legal) + trigger description draft
 - workflow steps (imperative, executable)
+- **audience** the artifact serves (B5a) + tone rule that follows
+- **data/claim sources** allowed (B5b) — user-provided / cited / labeled 示例-假设, nothing else
+- **craft notes** (B5c) — the domain heuristics, each as what + why
 - needed scripts/assets/references
 - out-of-scope list
 
@@ -65,6 +68,7 @@ Tell the user:
 - where the skill lives
 - how to invoke it (`/skill:<name>` or natural language)
 - one example trigger phrase they can test immediately
+- **improvement log**: list what the trial exposed and what it feeds back into skill-forge itself (a new B-branch, a guardrail, a craft-note pattern). A meta-skill that doesn't log its test findings stays one version behind.
 
 ## Rules
 

@@ -31,6 +31,21 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - **Decides**: usage examples in SKILL.md.
 - *Skip if*: user showed a concrete example end-to-end.
 
+## B5a. Audience
+- Who is the end-reader/end-user of the artifact? (打工人 vs 管理者, 客户 vs 内部) — the artifact's register/tone follows the audience, not the author.
+- **Decides**: a "tone follows X" line in the generated workflow. Skipping this is how articles drift to the author's voice.
+- *Skip if*: artifact has no audience dimension (pure tooling).
+
+## B5b. Claims & data sourcing
+- Where do numbers/examples in the artifact come from? Allowed sources: user-provided, cited, or explicitly labeled 示例/假设. Prohibited: invented specifics presented as fact ("某团队时长降六成" without a label = fabricated).
+- **Decides**: a hard guardrail in the generated SKILL.md: "every number/example carries a source or a 示例/假设 label; no exceptions".
+- *Skip if*: artifact contains no factual claims.
+
+## B5c. Domain heuristics (the methodology gap)
+- What craft rules does this domain have that a generic workflow can't know? (例: 选角度要反直觉优先, 短段落是因为手机阅读, 收口要做选择题.) If the domain heuristics aren't in this interview, the artifact lands at 60 分 even when the workflow is perfect.
+- **Decides**: a "Craft notes" block in the generated SKILL.md; each heuristic = one line of what + one line of why (the official skill-creator's "explain why, not MUSTs" rule).
+- *Explore first*: existing house style docs, previous artifacts, the user's own phrasings in B2.
+
 ## B6. Environment & credentials
 - OS, language/runtime, dependencies? For any external API: where do credentials live today, and where should the skill read them from?
 - **Decides**: `compatibility` frontmatter, Setup section, and the Guardrails secrets rule.
@@ -61,7 +76,7 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 ## Termination & budget
 
 - **Hard cap: 10 questions total.** Branches answered by exploration don't count, but anything still open at question 10 is resolved with your recommended defaults, listed as explicit assumptions in the spec, and the user approves once.
-- **Order by blast radius**: B1 (scope forks — e.g. 公众号 vs 企业微信) first, then B2 (triggers), then B4 (execution mechanism) — these three decide the whole shape. B5/B6/B7 next; B8/B9/B10 last.
+- **Order by blast radius**: B1 (scope forks — e.g. 公众号 vs 企业微信) first, then B2 (triggers), then B4 (execution mechanism) — these three decide the whole shape. B5/B5a/B5b/B5c next (B5c often carries the domain's quality ceiling); B6/B7 next; B8/B9/B10 last.
 - If the user says "stop asking, just build it", immediately fold all remaining branches into the spec as assumptions.
 
 Stop when B1–B10 are resolved (asked or answered by exploration). Then move to spec confirmation. If the user says "just build it" early, resolve the open branches yourself with recommended defaults, list your assumptions in the spec, and get one approval.

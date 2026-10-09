@@ -30,6 +30,7 @@ cd <skill-dir> && <init command>
 
 - NEVER <forbidden action>
 - NEVER write, log, or commit secrets (API tokens come from <env var name / keychain>)   # only when an external API is involved
+- EVERY number or example in the artifact carries a source or a 示例/假设 label   # when B5b applies
 
 ## References
 - <one-line pointer>: [detail](references/<file>.md)
@@ -48,7 +49,14 @@ cd <skill-dir> && <init command>
     └── <template>.<ext>
 ```
 
+## Craft notes (when B5c resolved anything)
+
+- <what>: <one line of why>   # e.g. "angles: pick the counterintuitive one — 套路化三件套读者刷到第二个就猜到"
+
 ## Rules when filling
+
+1. Spec frontmatter must carry: **audience** (B5a, tone follows it), **data sources** (B5b allowed list), **craft notes** (B5c), in addition to name/description/workflow/scripts/references.
+2. B5a/B5b/B5c answers become *content* rules in the generated SKILL.md, not just process rules — they are what separate a 60-point artifact from an 80-point one.
 
 1. SKILL.md body = workflow only, skimmable in one sitting. No line quota — split by kind: reference material → `references/`, code → `scripts/`.
 2. Each step = one imperative sentence + one command. No "as appropriate", no "handle errors sensibly".
