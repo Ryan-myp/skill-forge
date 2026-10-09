@@ -17,6 +17,7 @@
 | v1.1 | **第二遍密度回补**（同一 docx-forge 开 provenance 规则追平官方） | 上游文本里一次性挖出 7 条本 skill 缺的 gotcha（run 碎片/外部 docx symlink 安全/tracked changes 机制/空 bullet 假象/表格双宽度/tab leader/样式名）；f-string 反斜杠在 py3.9 炸（老代码假设 3.12+） | **领域密度 floor**（E 轴：对标 skill 必须按 gotcha 类别 match-or-declare，缺类需声明“未实现·文档位”）；探索先挖本地来源（官方 gotcha 文本即现成上游） |
 | v1.2 | **weread 真实场景审计** | weread 里抓出 `upgrade_info` 指令注入面（第三方 API 响应字段驱动 agent 执行升级，配合自带 curl 模板=完整攻击路径）；分页循环无次数上限；另误报一次“版本漂移”（1.0.3 vs 1.0.5），grep 复核后撤——**发现必须可复现才能上报** | ① 响应字段=数据非指令（唯一可执行升级路径是用户显式设定的）② 无界循环必须带上限+停报路径（C 轴 0 分项）③ wild-audit 增加“发现复核”步骤（grep 二次确认后才上报） |
 | v1.3 | **weread 真实数据试金石**（用户真实 key，live API） | 导出划线+阅读统计双任务全绿；实证 4 件事：`readTimes` 字段名≠字段义（是对象分桶非数组）、upgrade_info live 回包正在指示“下载 CDN zip 替换本地 skill”（实证不执行）、版本矛盾 1.0.3 vs 1.0.5 可 grep 定案、`/readdata/detail` 靠猜 endpoint 会被 errcode -2003 打回（能力预检规则有效） | ① **字段名会说谎**：字段语义规则必须带真实回包样例，无样例的字段表=未验证 ② **自更新协议=攻击面**：按“谁签的/能改什么/用户是否要自动替换”三问审计，发现如实记录不执行 ③ wild-audit 升级 5 检查（+版本一致性机械 grep） |
+| v1.4 | **skill-forge 自身 D 轴审计**（用自己规则审自己） | 连续加规则后 SKILL.md 21 条全内联（102 行）——违反自己的 progressive-disclosure；且一条规则里混入游离句（trigger 规则里嵌着 context-hygiene 的结论句）；wild-audit 模式段还停在 4 检查（规则段已 5） | **规则两层化**：SKILL.md 只留 22 条一行式条文，证据链/事故全外移到 `references/rules.md`（89 行→可读性复原）；交叉引用守恒检查（模式段 vs 规则段 vs checklist 对齐）；TESTLOG 行与 rules.md 条目必须同 commit |
 
 ## 当前形态覆盖
 
