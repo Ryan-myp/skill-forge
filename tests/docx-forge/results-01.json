@@ -1,0 +1,12 @@
+{
+  "note": "agent 依 docx-forge description 独立路由",
+  "results": [
+    {"id": 1, "choice": "docx-forge"},
+    {"id": 2, "choice": "docx-forge"},
+    {"id": 3, "choice": "docx-forge"},
+    {"id": 4, "choice": "docx-forge"},
+    {"id": 5, "choice": "docx-forge"},
+    {"id": 6, "choice": "NO_SKILL"},
+    {"id": 7, "choice": "wxarticle"}
+  ]
+}

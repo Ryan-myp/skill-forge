@@ -1,0 +1,12 @@
+{
+  "skill": "docx-forge",
+  "n": 7,
+  "tp": 6,
+  "fn": 0,
+  "fp": 0,
+  "tn": 1,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "issues": []
+}

@@ -1,0 +1,47 @@
+{
+  "skill": "docx-forge",
+  "cands": [
+    "docx-forge",
+    "wxarticle",
+    "dv360-expert",
+    "NO_SKILL"
+  ],
+  "probes": [
+    {
+      "id": 1,
+      "expect": "docx-forge",
+      "prompt": "生成一份正式 Word 文档，要目录、页码、页眉"
+    },
+    {
+      "id": 2,
+      "expect": "docx-forge",
+      "prompt": "给这份 docx 加两条批注，指出风险评估那节的漏洞"
+    },
+    {
+      "id": 3,
+      "expect": "docx-forge",
+      "prompt": "把这个 Word 文件里的正文提出来给我"
+    },
+    {
+      "id": 4,
+      "expect": "docx-forge",
+      "prompt": "帮我把报告做成 .docx 交付给法务，要能打印"
+    },
+    {
+      "id": 5,
+      "expect": "docx-forge",
+      "prompt": "这份备忘录转成 Word 文档，保留标题层级"
+    },
+    {
+      "id": 6,
+      "expect": "NO_SKILL",
+      "prompt": "帮我把这份 Word 里的表格数据导成 xlsx"
+    },
+    {
+      "id": 7,
+      "expect": "wxarticle",
+      "prompt": "写篇公众号文章，讲我们新文档工具"
+    }
+  ],
+  "note": "候选集为局部（4）；全域部署时建议补全 10+ 探针含各域 skill 的专属路由"
+}
