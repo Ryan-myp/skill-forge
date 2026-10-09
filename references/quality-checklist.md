@@ -1,35 +1,36 @@
 # Quality Gate (0–100)
 
-Run after scaffolding, before delivery. **Below 80 = fix and re-score.**
+Run after scaffolding, **before** user acceptance. Agent scores A/C/D/E; **B counts only after the user confirms the trigger simulation** (SKILL.md step 6) — the agent proposes, the user disposes. Below 80 total = fix and re-score.
 
-## A. Standards compliance (25)
-- [x]-level checks, 5 pts each:
-  1. frontmatter: `name` + `description` present; name legal (lowercase/digits/hyphens, ≤64, no edge/consecutive hyphens)
-  2. description ≤1024 chars
-  3. every `[file](references/…)` / `./scripts/…` path in SKILL.md resolves to an existing file
-  4. every script is executable and smoke-ran successfully at least once
-  5. directory under a valid skill location, name unique (no collision with `ls ~/.agents/skills/`)
+## A. Standards compliance (20)
+5 pts each:
+1. frontmatter: `name` + `description` present; name legal (lowercase/digits/hyphens, ≤64, no edge/consecutive hyphens)
+2. description ≤1024 chars
+3. every `[file](references/…)` / `./scripts/…` path in SKILL.md resolves to an existing file
+4. every script is executable and smoke-ran successfully at least once
+5. directory under a valid skill location, name unique (no collision with `ls ~/.agents/skills/`)
 
-## B. Trigger accuracy (30) — the description is the router
-Simulate routing with 3 tasks:
-1. Two tasks the skill SHOULD handle (paraphrased from the user's B2 phrases) — would the description plausibly cause the agent to load it?
-2. One similar-but-different task it should NOT handle — does the description stay specific enough to avoid false positives?
-- 10 pts per task, award proportionally. Vague descriptions ("helps with X") cap this axis at 5/10.
+## B. Trigger accuracy (25) — agent-proposed, **user-confirmed**
+Simulate routing with 3 tasks and present the reasoning to the user:
+1. Two tasks the skill SHOULD handle (paraphrased from the user's B2 phrases) — would the description plausibly cause loading?
+2. One similar-but-different task it should NOT handle — is the description specific enough to avoid the false positive?
+- 10/10/5 split. Vague descriptions ("helps with X") cap this axis at 5/10.
+- **No points until the user confirms.** A missed confirmation is not a score — it's a fail state back to SKILL.md step 2, open branches only.
 
 ## C. Executability (25)
-For each workflow step:
-- Is it imperative with an exact command/decision rule? (scored)
-- Any step that says "as appropriate", "handle sensibly", "generally" → 0 for that step; the agent must never improvise a critical path.
-- 25 × (non-improvising steps ÷ total steps)
+- 15 pts: each workflow step is imperative with an exact command/decision rule. Any "as appropriate", "handle sensibly", "generally" → 0 for that step; 15 × (non-improvising steps ÷ total steps).
+- 10 pts: **end-to-end trial performed** — the skill was invoked on the smallest plausible real task and completed (trial artifacts exist: output files, command logs). Trial not run = 0/10.
 
 ## D. Progressive disclosure (10)
-- SKILL.md body ≤ ~100 lines and readable in < 30 s: 5
-- deep detail correctly offloaded to references/ (no 200-line SKILL.md): 5
+- 5: SKILL.md skimmable in one sitting; depth correctly offloaded to `references/`
+- 5: no step pushes a critical decision onto improvised prose
 
-## E. Safety & closure (10)
-- Guardrails present where mutations/deletes/credentials/network are involved: 5
-- success criteria verifiable (exit code, artifact, diff) — user can confirm a run worked: 5
+## E. Safety & closure (20)
+- 5: Guardrails present where mutations/deletes/credentials/network are involved
+- 5: **secrets rule** — no credential value in any skill file; when an API is involved, SKILL.md names the env var/keychain source and Guardrails forbids writing/logging secrets
+- 5: success criteria (B9) verifiable — the user can check a run worked
+- 5: trial output matched the success criteria
 
 ## Deliverable format
 
-Report the five scores + total + list of failed items. Fix fails, re-score, then handoff per SKILL.md step 6: location, `/skill:<name>` + natural-language trigger, one test phrase to try immediately.
+Report the five axis scores (B marked "pending user confirmation" if not yet confirmed) + total + list of failed items. Fix fails, re-score, then walk SKILL.md steps 6 → 7: acceptance artifacts to the user, then handoff (location, `/skill:<name>` + natural-language trigger, one test phrase).

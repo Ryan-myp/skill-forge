@@ -36,7 +36,7 @@ Present a one-page spec:
 
 Follow [references/anatomy.md](references/anatomy.md) and [references/template.md](references/template.md):
 - Create `~/.agents/skills/<name>/` (or project `.agents/skills/<name>/` if the user asked for project scope)
-- SKILL.md ≤ ~100 lines; depth moves to `references/`, code to `scripts/`
+- SKILL.md stays a workflow, not a manual: reference material → `references/`, code → `scripts/` (split by kind, not by line quota)
 - name: lowercase `a-z 0-9` + single hyphens, no leading/trailing/consecutive hyphens, ≤ 64 chars
 - description: what it does + when to use it + concrete user trigger phrases, ≤ 1024 chars
 - Every referenced file must exist; every script must be executable and run at least once
@@ -45,14 +45,21 @@ Follow [references/anatomy.md](references/anatomy.md) and [references/template.m
 
 Run [references/quality-checklist.md](references/quality-checklist.md) on the generated skill:
 - frontmatter valid, name legal, description specific
-- **trigger simulation**: given 3 real tasks the user performs, would the description cause the agent to load this skill?
 - every referenced script exists and smoke-runs
-- progressive disclosure: SKILL.md readable in < 30 seconds
+- **end-to-end trial**: invoke the skill on the smallest plausible real task (a 100-word article, one file, one item). Observe the full workflow; fix every break, then re-trial until the trial completes.
 - no step requires the agent to improvise (prose instructions it must guess = 60-point skill)
 
-Score 0–100. Anything below 80 → fix and re-score before delivery.
+Score the 5 axes with the rubric; below 80 → fix and re-score before acceptance.
 
-### 6. Handoff
+### 6. User acceptance (never self-grade the router)
+
+Present to the user: the trigger simulation (3 tasks, including the negative one) and the trial-run artifacts. The user confirms:
+- would this description load the skill for the right tasks — and not the wrong ones?
+- does the trial output meet their success criteria (B9)?
+
+Axis B points count **only after the user confirms** — the agent proposes, the user disposes. Any fail → resolve only the still-open branches (back to step 2, not a full re-interview), then re-verify.
+
+### 7. Handoff
 
 Tell the user:
 - where the skill lives
@@ -63,5 +70,6 @@ Tell the user:
 
 - Never skip the grill phase for non-trivial skills. A trivial one-liner utility may jump straight to spec approval, but only after the user confirms triviality.
 - Prefer executable commands over prose. "Run `./scripts/x.sh <input>`" beats "process the input appropriately".
-- Keep the generated SKILL.md short. If it exceeds ~100 lines, split.
+- Split by kind, not by count: workflow stays in SKILL.md; reference material to references/; code to scripts/. Readability test: a busy user skims the workflow in one sitting.
+- **Credentials are a first-class guardrail**: no secret ever enters a skill file. Scripts read tokens from environment variables or the user's keychain at runtime; SKILL.md names the variable, never its value; whenever an API is involved, Guardrails says so explicitly.
 - The generated skill's description is its most important artifact — spend the most interview time on it.

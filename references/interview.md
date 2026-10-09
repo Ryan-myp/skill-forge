@@ -31,10 +31,12 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - **Decides**: usage examples in SKILL.md.
 - *Skip if*: user showed a concrete example end-to-end.
 
-## B6. Environment
-- OS, language/runtime, dependencies, credentials location?
-- **Decides**: `compatibility` frontmatter and Setup section.
-- *Explore first*: run `which`/version checks on needed binaries; read existing config locations.
+## B6. Environment & credentials
+- OS, language/runtime, dependencies? For any external API: where do credentials live today, and where should the skill read them from?
+- **Decides**: `compatibility` frontmatter, Setup section, and the Guardrails secrets rule.
+- *Explore first*: run `which`/version checks on needed binaries; check for existing config.
+- **Never invent or persist secrets**: scripts read tokens from environment variables or the user's keychain at runtime; SKILL.md names the required variable, never its value.
+- *Skip if*: skill is fully local with no external API.
 
 ## B7. Failure modes
 - What can fail (auth expired, missing file, API down, partial state)? What should the skill do: retry, abort cleanly, or fall back?
@@ -52,10 +54,14 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - *Skip if*: output is a deterministic file with obvious check.
 
 ## B10. Guardrails
-- What must this skill NEVER do (touch prod, read secrets, delete, cost money)?
+- What must this skill NEVER do (touch prod, delete, spend money, **write or commit secrets**)?
 - **Decides**: explicit "Never" section in the generated SKILL.md.
-- Recommended default: inherit the host project's critical rules (secrets, injection, deletes).
+- Recommended default: inherit the host project's critical rules (secrets, injection, deletes) + B6's secrets rule.
 
-## Termination
+## Termination & budget
 
-Stop when B1–B10 are resolved (asked or answered by exploration). Then move to spec confirmation. If the user says "just build it", resolve the open branches yourself with recommended defaults, list your assumptions in the spec, and get one approval.
+- **Hard cap: 10 questions total.** Branches answered by exploration don't count, but anything still open at question 10 is resolved with your recommended defaults, listed as explicit assumptions in the spec, and the user approves once.
+- **Order by blast radius**: B1 (scope forks — e.g. 公众号 vs 企业微信) first, then B2 (triggers), then B4 (execution mechanism) — these three decide the whole shape. B5/B6/B7 next; B8/B9/B10 last.
+- If the user says "stop asking, just build it", immediately fold all remaining branches into the spec as assumptions.
+
+Stop when B1–B10 are resolved (asked or answered by exploration). Then move to spec confirmation. If the user says "just build it" early, resolve the open branches yourself with recommended defaults, list your assumptions in the spec, and get one approval.

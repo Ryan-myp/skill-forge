@@ -29,6 +29,7 @@ cd <skill-dir> && <init command>
 ## Guardrails
 
 - NEVER <forbidden action>
+- NEVER write, log, or commit secrets (API tokens come from <env var name / keychain>)   # only when an external API is involved
 
 ## References
 - <one-line pointer>: [detail](references/<file>.md)
@@ -49,7 +50,7 @@ cd <skill-dir> && <init command>
 
 ## Rules when filling
 
-1. SKILL.md body target: **≤ ~100 lines**. Over → split into `references/`.
+1. SKILL.md body = workflow only, skimmable in one sitting. No line quota — split by kind: reference material → `references/`, code → `scripts/`.
 2. Each step = one imperative sentence + one command. No "as appropriate", no "handle errors sensibly".
 3. Every file referenced must be created in the same pass.
 4. Every script: `chmod +x` + run once with a sample input; capture the exact output shape into the SKILL.md usage line.
