@@ -53,6 +53,7 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - **Decides**: a "Craft notes" block in the generated SKILL.md; each heuristic = one line of what + one line of why (the official skill-creator's "explain why, not MUSTs" rule) **+ a degradation path**: what to do when the heuristic can't apply (e.g. topic has no counterintuitive room → fall back to one sharp, checkable fact, never padded with clichés).
   A craft note without a degradation path *guarantees* a violation at the topic boundary where it stops fitting — the test that exposed this: a "counterintuitive angle" note broke on a client-facing performance-report topic that has no counterintuitive room.
 - *Explore first*: existing house style docs, previous artifacts, the user's own phrasings in B2.
+- **Provenance (v1.0)**: tag each craft note with where it came from — `measured`（我们踩过）/ `upstream`（issue、changelog、标准文档的坑章节）/ `user`（用户口述）。无来源的“最佳实践”当传闻处理：每条 -1 分（上限 -3）。对照测试结论：跟久经沙场的官方 skill 比，真正的差距在**来源纵深**，不在规则条数；grill 时多问一句“这条你是怎么知道的”就能把来源挖出来。
 
 ## B6. Environment & credentials
 - OS, language/runtime, dependencies — **full inventory, each with its install command** (npm/python modules *and* system binaries; implicit imports count: grep the scripts, don't trust the original's docs — a port once shipped without `defusedxml`/`lxml` and died on first run). For any external API: where do credentials live today, and where should the skill read them from?
