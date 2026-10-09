@@ -1,0 +1,12 @@
+{
+  "skill": "self-distill-kb",
+  "n": 10,
+  "tp": 9,
+  "fn": 0,
+  "fp": 0,
+  "tn": 1,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "issues": []
+}

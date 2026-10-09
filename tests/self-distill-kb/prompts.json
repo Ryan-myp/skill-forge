@@ -1,0 +1,16 @@
+{
+  "skill": "self-distill-kb",
+  "cands": ["self-distill-kb", "meeting-notes", "weread-skills", "ryan-knowledge-base", "wxarticle", "NO_SKILL"],
+  "probes": [
+    {"id": 1, "expect": "self-distill-kb", "prompt": "记一下我今天做的 skill-forge 压力测试"},
+    {"id": 2, "expect": "self-distill-kb", "prompt": "把刚才讨论的归一假设声明收进知识库"},
+    {"id": 3, "expect": "self-distill-kb", "prompt": "跑一次知识缺口分析，看看有哪些洞"},
+    {"id": 4, "expect": "self-distill-kb", "prompt": "我最近习惯上有什么变化？"},
+    {"id": 5, "expect": "self-distill-kb", "prompt": "查我知识库里关于 wiki 的条目"},
+    {"id": 6, "expect": "weread-skills", "prompt": "看看我微信读书的笔记"},
+    {"id": 7, "expect": "meeting-notes", "prompt": "把这段会议转写整理成纪要"},
+    {"id": 8, "expect": "ryan-knowledge-base", "prompt": "搜一下广告归因的资料"},
+    {"id": 9, "expect": "wxarticle", "prompt": "写篇公众号文章讲讲我的知识库"},
+    {"id": 10, "expect": "NO_SKILL", "prompt": "帮我把这份 docx 转成 pdf"}
+  ]
+}

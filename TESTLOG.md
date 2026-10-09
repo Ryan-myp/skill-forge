@@ -19,6 +19,7 @@
 | v1.3 | **weread 真实数据试金石**（用户真实 key，live API） | 导出划线+阅读统计双任务全绿；实证 4 件事：`readTimes` 字段名≠字段义（是对象分桶非数组）、upgrade_info live 回包正在指示“下载 CDN zip 替换本地 skill”（实证不执行）、版本矛盾 1.0.3 vs 1.0.5 可 grep 定案、`/readdata/detail` 靠猜 endpoint 会被 errcode -2003 打回（能力预检规则有效） | ① **字段名会说谎**：字段语义规则必须带真实回包样例，无样例的字段表=未验证 ② **自更新协议=攻击面**：按“谁签的/能改什么/用户是否要自动替换”三问审计，发现如实记录不执行 ③ wild-audit 升级 5 检查（+版本一致性机械 grep） |
 | v1.4 | **skill-forge 自身 D 轴审计**（用自己规则审自己） | 连续加规则后 SKILL.md 21 条全内联（102 行）——违反自己的 progressive-disclosure；且一条规则里混入游离句（trigger 规则里嵌着 context-hygiene 的结论句）；wild-audit 模式段还停在 4 检查（规则段已 5） | **规则两层化**：SKILL.md 只留 22 条一行式条文，证据链/事故全外移到 `references/rules.md`（89 行→可读性复原）；交叉引用守恒检查（模式段 vs 规则段 vs checklist 对齐）；TESTLOG 行与 rules.md 条目必须同 commit |
 | v1.5 | **无对标物压力测试**（新领域 meeting-notes 盲建 + 新会话可读性终审） | ① 17/22 条规则在无 benchmark 域是休眠状态（density floor/contamination/drift table 都不适用）——规则集偏“有对标物”场景 ② **mod-24 假设被试金石数据打脸**：25:13 实为跨夜墙上时间（09:40 开场→25:13 合理间隔 4h+），归一成 01:13 恰好“碰对”——但规则是“归一必声明假设”，不是“假设必对” ③ 新会话终审 9/9 通过（路径全真、入口链完整） | ① 归一/换算类规则必须带“假设声明”行（本例：时间戳解释不确定时两读都算合法，但纪要必须写出来选了哪种）② meeting-notes 盲建样本留档（三陷阱试金石+ F1=1.0 基线） |
+| v1.6 | **self-distill-kb 全流程实战**（grill 4 问，探索替代 6 问） | 探索直接挖出 3 个 grill 问题（隔离要求/查重渠道/落点）；gap_lint.py 首版 SyntaxError（嵌套 comprehension 里混入 set 运算）；用户约束“不影响 ryan-personal-knowledge 其他能力”→ 知识层从“写入共享 wiki”改为“skill 自带 kb + 只读参考” | ① **隔离铁律**（B0 变体）：复用现有设施但写路径出界即拒绝，对共享目录只读（新 skill 与老库共存时用）② 试金石含隔离验证（老目录 mtime 零改动）③ 4 类洞中“习惯洞”阈值 ≥3 次，试金石中验证触发 |
 
 ## 当前形态覆盖
 

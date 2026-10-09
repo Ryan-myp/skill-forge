@@ -1,0 +1,15 @@
+{
+  "note": "agent 依 description 独立路由；#10 docx->pdf 不命中任何已有 skill",
+  "results": [
+    {"id": 1, "choice": "self-distill-kb"},
+    {"id": 2, "choice": "self-distill-kb"},
+    {"id": 3, "choice": "self-distill-kb"},
+    {"id": 4, "choice": "self-distill-kb"},
+    {"id": 5, "choice": "self-distill-kb"},
+    {"id": 6, "choice": "weread-skills"},
+    {"id": 7, "choice": "meeting-notes"},
+    {"id": 8, "choice": "ryan-knowledge-base"},
+    {"id": 9, "choice": "wxarticle"},
+    {"id": 10, "choice": "NO_SKILL"}
+  ]
+}
