@@ -86,6 +86,12 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - Also: a "fresh context" verification step (e.g. reader test in a new session) only counts if the new context is actually clean — same-session "roleplay as a stranger" is fake and scores 0.
 - *Skip if*: single-pass skill, no user gates.
 
+## B12. API-wrapping specifics (only if the skill wraps a live API/SDK)
+- **Contamination**: what are the close look-alike domains (other providers' SDKs, same-named CLIs)? Get a grep/markers list the skill runs *first*, and a stop-and-ask rule.
+- **Drift**: which 3–5 fields of the API changed most recently (cross-check the skill's data against its own "as-of" date)? The skill must carry a stale-prior → current table.
+- **Invocation surface**: does the user call it with bare subcommands? If so, table them with interaction level.
+- *Skip if*: no external API (local files/tools only).
+
 ## Termination & budget
 
 - **Hard cap: 10 questions total.** Branches answered by exploration don't count, but anything still open at question 10 is resolved with your recommended defaults, listed as explicit assumptions in the spec, and the user approves once.
