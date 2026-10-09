@@ -8,12 +8,16 @@ Fill per confirmed spec, then create at `~/.agents/skills/<name>/` (global) or `
 ---
 name: <name>
 description: <what it does, concretely>. Use when <trigger conditions, file types, verbatim user phrases in quotes>.
+# license: <MIT/Apache-2.0/…>   # required when the skill wraps or adapts external content; proprietary → rewrite, don't copy
 ---
 
 # <Skill Name>
 
 ## Setup (if any one-time init)
 
+```bash
+# full dependency inventory: npm/python modules + system binaries, each with its install command
+```
 ```bash
 cd <skill-dir> && <init command>
 ```

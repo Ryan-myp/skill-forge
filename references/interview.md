@@ -2,6 +2,13 @@
 
 Decision tree for the grill phase. Resolve each branch. Ask **one question at a time**, each with a recommended answer. Skip any question the environment already answers — explore first, ask only what you can't derive.
 
+**Porting mode (spec = an existing skill)**: the grill is skipped; run B0 + B6 + B8 as *extraction checks* against the original instead (license first — it gates everything; dependencies by reading its scripts; coverage by diffing its script inventory vs documented commands).
+
+## B0. License (gate)
+- What license governs the material being ported/wrapped? (MIT/Apache/proprietary?)
+- **Gates everything**: proprietary content (scripts, assets) may not be copied wholesale — port the methodology, rewrite the code, and credit the source.
+- Explore: read LICENSE / `license:` frontmatter of the original. *Stop here and ask the user if it's proprietary.*
+
 ## B1. Scope
 - Single task, or a family of related tasks?
 - **Decides**: one skill vs. one skill with subcommands/args.
@@ -48,7 +55,7 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - *Explore first*: existing house style docs, previous artifacts, the user's own phrasings in B2.
 
 ## B6. Environment & credentials
-- OS, language/runtime, dependencies? For any external API: where do credentials live today, and where should the skill read them from?
+- OS, language/runtime, dependencies — **full inventory, each with its install command** (npm/python modules *and* system binaries; implicit imports count: grep the scripts, don't trust the original's docs — a port once shipped without `defusedxml`/`lxml` and died on first run). For any external API: where do credentials live today, and where should the skill read them from?
 - **Decides**: `compatibility` frontmatter, Setup section, and the Guardrails secrets rule.
 - *Explore first*: run `which`/version checks on needed binaries; check for existing config.
 - **Never invent or persist secrets**: scripts read tokens from environment variables or the user's keychain at runtime; SKILL.md names the required variable, never its value.
@@ -59,10 +66,10 @@ Decision tree for the grill phase. Resolve each branch. Ask **one question at a 
 - **Decides**: error-handling steps in the workflow.
 - Recommended default: fail fast with a clear message; no silent fallbacks.
 
-## B8. Reference material
-- Which docs/charts/scripts exist that the skill should link to (progressive disclosure) instead of inlining?
-- **Decides**: `references/` content.
-- *Explore first*: look in the user's repo for READMEs, docs/, man pages of wrapped tools.
+## B8. Reference material & script coverage
+- Which docs/charts/scripts exist that the skill should link to (progressive disclosure) instead of inlining? **And: does the script inventory exactly match the documented command surface?** An shipped script with no doc entry is a coverage bug (found in a real port: `browser-hn-scraper.js` undocumented in its own SKILL.md).
+- **Decides**: `references/` content + the one-liner each script gets.
+- *Explore first*: look in the user's repo for READMEs, docs/, man pages of wrapped tools; diff `ls scripts/` against every command mentioned in SKILL.md.
 
 ## B9. Success criteria
 - How does the user know a run succeeded? (exit code, file diff, screenshot, metric)

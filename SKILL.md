@@ -15,6 +15,8 @@ Restate the goal in one sentence. Confirm two things:
 - What task will the **target** skill automate?
 - How will it be triggered (user phrases, files, events)?
 
+**Spec source check**: is this a fresh request (user's words) or a **port of an existing skill** (its SKILL.md + scripts are the source of truth)? If a port: skip the grill in step 2, go to **porting mode** instead — extract fidelity facts from the original (gotcha count, command surface, script inventory, license) and rebuild the instruction layer only. Description is **derived, not inherited**: keep the routing intent, rewrite the wording with concrete trigger phrases. Never wholesale-copy content you don't have the license to copy (check LICENSE first; proprietary → port the *methodology*, rewrite the code).
+
 ### 2. Grill (interview phase)
 
 Load [references/interview.md](references/interview.md).
@@ -76,4 +78,6 @@ Tell the user:
 - Prefer executable commands over prose. "Run `./scripts/x.sh <input>`" beats "process the input appropriately".
 - Split by kind, not by count: workflow stays in SKILL.md; reference material to references/; code to scripts/. Readability test: a busy user skims the workflow in one sitting.
 - **Credentials are a first-class guardrail**: no secret ever enters a skill file. Scripts read tokens from environment variables or the user's keychain at runtime; SKILL.md names the variable, never its value; whenever an API is involved, Guardrails says so explicitly.
+- **Dependency inventory**: every runtime dep (npm/python/binary) gets a line with its install command; a trial that hits a missing dep reports it honestly, never silently skips the step it blocked.
+- **Script documentation coverage**: every shipped script is documented somewhere (SKILL.md or references/); an undocumented script is a coverage bug, scored 0 on axis D.
 - The generated skill's description is its most important artifact — spend the most interview time on it.
